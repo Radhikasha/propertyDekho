@@ -452,7 +452,7 @@ body {
 
 .filter-group label {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.977);
   font-weight: 500;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
@@ -725,7 +725,7 @@ body {
 
 .status-negotiation {
   background-color: rgba(255, 193, 7, 0.9);
-  color: white !important; /* Force white text */
+  /*color: white !important;  Force white text */
 }
 
 .status-sold {
@@ -817,7 +817,7 @@ body {
 .spec-label {
   display: block;
   font-size: 0.8rem;
-  color: #6c757d;
+  color: #000000;
   margin-bottom: 0.3rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -999,7 +999,7 @@ body {
 }
 
 .modal-content {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   padding: 2rem;
   border-radius: 8px;
   width: 100%;
@@ -1022,7 +1022,7 @@ body {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #555;
+  color: #000000;
 }
 
 .form-group input,
@@ -1032,6 +1032,8 @@ body {
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+  
+  background:rgba(0, 0, 0, 0.406);
 }
 
 .form-group textarea {

@@ -15,6 +15,7 @@ import ClientManager from './components/ClientManager';
 import MyListings from './components/MyListings';
 import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
+import LogoSplash from './components/LogoSplash';
 
 // Layout Component
 const Layout = ({ children }) => (
@@ -50,122 +51,126 @@ const ProtectedRoute = ({ children }) => {
   return isAuthenticated ? children : <Navigate to="/login" replace />;
 };
 
+
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
+  useEffect(() => {
+    // Show splash for 2.1s (animation duration + fade)
+    const timer = setTimeout(() => setShowSplash(false), 2100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          
-          {/* Protected Routes */}
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <Navigate to="/dashboard" replace />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <Dashboard />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          // In your route definitions, add:
-          <Route path="/edit-property/:id" element={<EditProperty />} />
-          
-          <Route
-            path="/properties"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <PropertyList />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          
-          <Route
-            path="/AddProperty"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <AddProperty />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          
-          <Route
-            path="/properties/:id"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <PropertyDetails />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          
-          <Route
-            path="/properties/edit/:id"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <EditProperty />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          
-          <Route
-            path="/my-listings"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <MyListings />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          
-          <Route
-            path="/clients"
-            element={
-              <ProtectedRoute>
-                <Layout>
-                  <ClientManager />
-                </Layout>
-              </ProtectedRoute>
-            }
-          />
-          
-          {/* 404 Route */}
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
-        </Routes>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-      </div>
-    </Router>
+    <>
+      {showSplash && <LogoSplash />}
+      {!showSplash && (
+        <Router>
+          <div className="App">
+            <Routes>
+              {/* Public Routes */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              {/* Protected Routes */}
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Navigate to="/dashboard" replace />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/edit-property/:id" element={<EditProperty />} />
+              <Route
+                path="/properties"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <PropertyList />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/AddProperty"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <AddProperty />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/properties/:id"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <PropertyDetails />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/properties/edit/:id"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <EditProperty />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/my-listings"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <MyListings />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/clients"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <ClientManager />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              {/* 404 Route */}
+              <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            </Routes>
+            <ToastContainer
+              position="top-right"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
+          </div>
+        </Router>
+      )}
+    </>
   );
 }
 

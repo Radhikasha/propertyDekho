@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaEdit, FaTrash, FaEye, FaPlus, FaMapMarkerAlt, FaRupeeSign, FaHome, FaUserPlus, FaSave, FaTimes } from 'react-icons/fa';
 import './MyListings.css';
+import LogoSplash from './LogoSplash';
 
 function MyListings() {
   const [properties, setProperties] = useState([]);
@@ -134,42 +135,7 @@ function MyListings() {
   };
 
   if (loading) {
-    return (
-      <div className="my-listings-container">
-        <div className="listings-header">
-          <div className="header-content">
-            <h1>My Property Listings</h1>
-            <p>Loading your property listings...</p>
-          </div>
-        </div>
-
-        {/* Enhanced Loading with Skeleton Cards */}
-        <div className="loading-spinner">
-          <div className="spinner"></div>
-          <p>Fetching your properties...</p>
-        </div>
-
-        {/* Skeleton Cards for Better UX */}
-        <div className="skeleton-grid">
-          {[...Array(6)].map((_, index) => (
-            <div key={index} className="skeleton-card">
-              <div className="skeleton-image"></div>
-              <div className="skeleton-content">
-                <div className="skeleton-title"></div>
-                <div className="skeleton-text"></div>
-                <div className="skeleton-text"></div>
-                <div className="skeleton-text"></div>
-                <div className="skeleton-actions">
-                  <div className="skeleton-button"></div>
-                  <div className="skeleton-button"></div>
-                  <div className="skeleton-button"></div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
+    return <LogoSplash />;
   }
 
   if (error) {

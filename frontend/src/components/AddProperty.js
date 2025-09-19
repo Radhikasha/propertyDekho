@@ -1,7 +1,8 @@
+
 import React, { useState } from 'react';
 import { createProperty } from '../services/api';
 import './AddProperty.css';
-// Image is in the public folder, so we can reference it directly
+import LocationPicker from './LocationPicker';
 const backgroundImage = '/images/add_property.webp';
 
 const AddProperty = () => {
@@ -153,8 +154,9 @@ const AddProperty = () => {
           )}
         </div>
 
+
         <div className="form-group">
-          <label>Location*</label>
+          <label>Location (Address)*</label>
           <input
             type="text"
             name="location"
@@ -163,7 +165,11 @@ const AddProperty = () => {
             placeholder="Address"
             required
           />
-          
+          <label>Select Location on Map*</label>
+          <LocationPicker
+            value={formData.coordinates}
+            onChange={coords => setFormData(prev => ({ ...prev, coordinates: coords }))}
+          />
           <label>Description</label>
           <textarea
             name="description"

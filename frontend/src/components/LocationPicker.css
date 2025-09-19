@@ -1,0 +1,13 @@
+.location-picker-container {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: #222831;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.location-coords {
+  color: #fff;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}

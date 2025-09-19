@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { getProperties } from '../services/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './PropertyList.css';
+import LogoSplash from './LogoSplash';
 
 function PropertyList() {
   const [properties, setProperties] = useState([]);
@@ -169,7 +171,7 @@ function PropertyList() {
     name: '',
     email: '',
     phone: '',
-    message: 'I am interested in this property. Please contact me with more details.'
+    message: ''
   });
 
   // Handle enquiry form input change
@@ -199,37 +201,12 @@ function PropertyList() {
     
     // Optional: Still send the data to the server in the background
     try {
-      await fetch(`http://localhost:5000/api/enquiries/${selectedProperty._id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: enquiryForm.name,
-          email: enquiryForm.email,
-          phone: enquiryForm.phone,
-          message: enquiryForm.message
-        })
-      });
-      // No need to show success message again since we already showed the alert
-    } catch (error) {
-      console.error('Error sending enquiry:', error);
-      // Don't show error to user since we already showed success
+
     }
   };
 
   if (loading) {
-    return (
-      <div className="property-list-container">
-        <div className="property-background"></div>
-        <div className="content-overlay">
-          <div className="property-list">
-            <h2>Property Listings</h2>
-            <div className="loading">Loading properties...</div>
-          </div>
-        </div>
-      </div>
-    );
+    return <LogoSplash />;
   }
 
   if (error) {
