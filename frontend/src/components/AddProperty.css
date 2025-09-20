@@ -1,0 +1,372 @@
+/* AddProperty Component Styles */
+.add-property-container {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-property-bg {
+  background: url('../../public/images/add_property.webp') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.add-property-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.523);
+  backdrop-filter: blur(3px);
+  z-index: 0;
+}
+
+/* Add Property Form Styles */
+.add-property {
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+}
+
+.add-property h2 {
+  color: #fff;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  text-shadow: 0 1px 3px rgb(255, 255, 255);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.add-property h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  border-radius: 3px;
+}
+
+.property-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: rgba(16, 18, 27, 0.4) !important;
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.property-form:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.25);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  font-family: inherit;
+  color: #fff !important;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-group label,
+.form-group input,
+.form-group select,
+.form-group textarea,
+.form-group input::placeholder {
+  color: #fff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25), 
+              inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.coordinates-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.coordinates-input > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.coordinates-input small {
+  margin-top: 4px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Map container styles */
+.map-container {
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  height: 300px;
+  width: 100%;
+}
+
+/* Fix for Leaflet container */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 4px;
+}
+
+.leaflet-popup-content {
+  margin: 10px;
+  font-size: 14px;
+}
+
+.map-instructions {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
+  text-align: center;
+  padding: 5px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 0 -0.75rem;
+}
+
+.form-row > .form-group {
+  flex: 1;
+  min-width: 200px;
+  padding: 0 0.75rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* Image Preview */
+.image-preview {
+  margin-top: 1.5rem;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.image-preview:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.image-preview:hover img {
+  transform: scale(1.02);
+}
+
+/* Map Preview */
+.map-preview {
+  margin-top: 1rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Submit Button */
+button[type="submit"],
+button[type="button"] {
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.9), rgba(99, 102, 241, 0.9)) !important;
+  color: white !important;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px -5px rgba(79, 70, 229, 0.4);
+  min-width: 160px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.5);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+button[type="submit"]:active,
+button[type="button"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+button[type="button"] {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.2);
+}
+
+button[type="button"]:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.25);
+}
+
+.submit-btn:hover {
+  background-color: #357abd;
+}
+
+/* Message Styling */
+.message {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.message.success {
+  background: rgba(34, 197, 94, 0.2);
+  color: #86efac;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.message.success::before {
+  background: #22c55e;
+}
+
+.message.error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.message.error::before {
+  background: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-property {
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .form-row .form-group {
+    width: 100%;
+  }
+}

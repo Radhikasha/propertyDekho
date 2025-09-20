@@ -1,0 +1,41 @@
+services:
+  # Backend Service
+  - type: web
+    name: propertydekho-backend
+    env: node
+    build:
+      path: ./backend
+      command: "npm install"
+    envVars:
+      - key: MONGODB_URI
+        fromDatabase:
+          name: propertydekhodb
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NODE_ENV
+        value: production
+    plan: free
+
+  # Frontend Service
+  - type: web
+    name: propertydekho-frontend
+    env: static
+    build:
+      path: ./frontend
+      command: "npm install && npm run build"
+    staticPublishPath: "./build"
+    envVars:
+      - key: REACT_APP_API_URL
+        sync: false
+    routes:
+      - type: rewrite
+        source: "/*"
+        destination: "/index.html"
+    plan: free
+
+databases:
+  - name: propertydekhodb
+    databaseName: propertyDekho
+    user: propertyDekhoUser
+    plan: free
