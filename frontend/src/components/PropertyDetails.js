@@ -1,26 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useParams, Link } from 'react-router-dom'; // Removed unused useNavigate
+import { useParams, Link } from 'react-router-dom';
 import { FaArrowLeft, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined, FaEdit } from 'react-icons/fa';
 import { getProperty } from '../services/api';
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import FreePropertyMap from './FreePropertyMap';
+import NearbyPlaces from './NearbyPlaces';
 import './PropertyDetails.css';
-
-// Fix for default marker icons in React
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
 
 const PropertyDetails = () => {
   // All hooks must be called at the top level, before any conditional returns
@@ -179,24 +163,17 @@ const PropertyDetails = () => {
           <div className="map-container">
             <h3>Location</h3>
             <div className="map-wrapper">
-              <MapContainer 
-                center={coords} 
-                zoom={14} 
-                style={{ height: '300px', width: '100%', borderRadius: '8px' }}
-                zoomControl={false}
-              >
-                <TileLayer
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                />
-                <Marker position={coords}>
-                  <Popup>
-                    <strong>{getPropertyValue(property.title, 'Property')}</strong><br />
-                    {getPropertyValue(property.location, 'Location not specified')}
-                  </Popup>
-                </Marker>
-              </MapContainer>
+              <FreePropertyMap coordinates={property.coordinates} />
+              {property.location && (
+                <div className="location-info">
+                  <p><strong>Address:</strong> {property.location}</p>
+                </div>
+              )}
             </div>
+          </div>
+          
+          <div className="nearby-places-section">
+            <NearbyPlaces coordinates={property.coordinates} />
           </div>
         </div>
         

@@ -91,6 +91,7 @@ function Dashboard() {
         
         <form onSubmit={handleSearchSubmit} className="search-form">
           <div className="search-box">
+            <FaSearch className="search-icon" />
             <input
               type="text"
               placeholder="Search by location (e.g., Mathura, Delhi, Mumbai)..."
@@ -100,9 +101,6 @@ function Dashboard() {
               className="search-input"
               aria-label="Search properties by location"
             />
-            <button type="submit" className="search-button" aria-label="Search">
-              <FaSearch className="search-icon" />
-            </button>
           </div>
         </form>
         

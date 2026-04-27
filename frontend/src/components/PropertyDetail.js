@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getProperty, deleteProperty } from '../services/api';
 import './PropertyDetail.css';
-import MapboxStaticMap from './MapboxStaticMap';
+import FreeStaticMap from './FreeStaticMap';
 
 function PropertyDetail() {
   const { id } = useParams();
@@ -145,7 +145,7 @@ function PropertyDetail() {
       {/* Map Section */}
       {property.coordinates && (
         <div id="property-map-section" className="property-map-section">
-          <MapboxStaticMap coordinates={property.coordinates} />
+          <FreeStaticMap coordinates={property.coordinates} />
         </div>
       )}
     </div>

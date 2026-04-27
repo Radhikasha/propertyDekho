@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { createProperty } from '../services/api';
 import './AddProperty.css';
-import LocationPicker from './LocationPicker';
+import FreeLocationPicker from './FreeLocationPicker';
 const backgroundImage = '/images/add_property.webp';
 
 const AddProperty = () => {
@@ -166,7 +166,7 @@ const AddProperty = () => {
             required
           />
           <label>Select Location on Map*</label>
-          <LocationPicker
+          <FreeLocationPicker
             value={formData.coordinates}
             onChange={coords => setFormData(prev => ({ ...prev, coordinates: coords }))}
           />
